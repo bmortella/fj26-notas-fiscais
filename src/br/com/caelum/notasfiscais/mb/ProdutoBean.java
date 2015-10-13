@@ -31,6 +31,10 @@ public class ProdutoBean {
 		this.produtos = dao.listaTodos();
 	}
 	
+	public void cancela(){
+		this.produto = new Produto();
+	}
+	
 	public Produto getProduto(){
 		return this.produto;
 	}
