@@ -4,17 +4,24 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-<title>Sistema de Notas Fiscais</title>
+    <title>Sistema de Notas Fiscais</title>
+    <h:outputStylesheet library="css" name="style.css" />
 </h:head>
 
 <h:body>
+    <div id="cabecalho">
+        <h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany" />
+    </div>
+    
+    <div id="conteudo">
     <h:form id="formCadastro">
         <h:inputHidden value="#{produtoBean.produto.id}"/>
         <h2>
             <h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
             <h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
         </h2>
-        <h:panelGrid columns="2">
+        <fieldset>
+            <legend>Dados do Produto</legend>
             <h:outputLabel value="Nome:" for="nome" />
             <h:inputText id="nome" value="#{produtoBean.produto.nome}" />
             
@@ -30,11 +37,12 @@
             <h:commandButton value="Cancelar" action="#{produtoBean.cancela}" rendered="#{not empty produtoBean.produto.id}">
                 <f:ajax render="@form"/>
             </h:commandButton>
-        </h:panelGrid>
+        </fieldset>
     </h:form>
     
+    <h2>Listagem de Produtos</h2>
     <h:form>
-    <h:dataTable value="#{produtoBean.produtos}" var="produto">
+    <h:dataTable value="#{produtoBean.produtos}" var="produto" styleClass="dados" rowClasses="impar,par">
         <h:column>
             <f:facet name="header">Nome</f:facet>
             #{produto.nome}
@@ -61,5 +69,11 @@
         </h:column>
     </h:dataTable>
     </h:form>
+    </div>
+    
+    <div id="rodape">
+        Copyright 2015.
+        Todos os direitos reservados a Caelum.
+    </div>
 </h:body>
 </html>
