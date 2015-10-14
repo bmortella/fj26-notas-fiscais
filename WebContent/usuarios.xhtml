@@ -21,26 +21,23 @@
     
     <div id="conteudo">
     <h:form id="formCadastro">
-        <h:inputHidden value="#{produtoBean.produto.id}"/>
+        <h:inputHidden value="#{usuarioBean.usuario.id}"/>
         <h2>
-            <h:outputText value="Novo Produto" rendered="#{empty produtoBean.produto.id}" />
-            <h:outputText value="Editar Produto" rendered="#{not empty produtoBean.produto.id}" />
+            <h:outputText value="Novo Usuario" rendered="#{empty usuarioBean.usuario.id}" />
+            <h:outputText value="Editar Usuario" rendered="#{not empty usuarioBean.usuario.id}" />
         </h2>
         <fieldset>
             <legend>Dados do Produto</legend>
-            <h:outputLabel value="Nome:" for="nome" />
-            <h:inputText id="nome" value="#{produtoBean.produto.nome}" />
+            <h:outputLabel value="Login:" for="login" />
+            <h:inputText id="login" value="#{usuarioBean.usuario.login}" />
             
-            <h:outputLabel value="Descrição:" for="descricao"/>
-            <h:inputText id="descricao" value="#{produtoBean.produto.descricao}" />
+            <h:outputLabel value="Senha:" for="senha"/>
+            <h:inputText id="senha" value="#{usuarioBean.usuario.senha}" />
             
-            <h:outputLabel value="Preço:" for="preco"/>
-            <h:inputText id="preco" value="#{produtoBean.produto.preco}" />
-            
-            <h:commandButton value="Gravar" action="#{produtoBean.grava}">
+            <h:commandButton value="Gravar" action="#{usuarioBean.grava}">
                 <f:ajax execute="@form" render="@all" />
             </h:commandButton>
-            <h:commandButton value="Cancelar" action="#{produtoBean.cancela}" rendered="#{not empty produtoBean.produto.id}">
+            <h:commandButton value="Cancelar" action="#{usuarioBean.cancela}" rendered="#{not empty produtoBean.produto.id}">
                 <f:ajax render="@form"/>
             </h:commandButton>
         </fieldset>
@@ -48,28 +45,24 @@
     
     <h2>Listagem de Produtos</h2>
     <h:form>
-    <h:dataTable value="#{produtoBean.produtos}" var="produto" styleClass="dados" rowClasses="impar,par">
+    <h:dataTable value="#{usuarioBean.usuarios}" var="usuario" styleClass="dados" rowClasses="impar,par">
         <h:column>
-            <f:facet name="header">Nome</f:facet>
-            #{produto.nome}
+            <f:facet name="header">Login</f:facet>
+            #{usuario.login}
         </h:column>
         <h:column>
-            <f:facet name="header">Descrição</f:facet>
-            #{produto.descricao}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Preço</f:facet>
-            #{produto.preco}
+            <f:facet name="header">Senha</f:facet>
+            #{usuario.senha}
         </h:column>
         <h:column>
             <f:facet name="header">Ações</f:facet>
-            <h:commandLink action="#{produtoBean.remove(produto)}" value="Remover">
+            <h:commandLink action="#{usuarioBean.remove(usuario)}" value="Remover">
                 <f:ajax render="@form" />
             </h:commandLink>
              | 
             <h:commandLink value="Alterar">
               <f:ajax render=":formCadastro"/>
-                <f:setPropertyActionListener value="#{produto}" target="#{produtoBean.produto}"/>
+                <f:setPropertyActionListener value="#{usuario}" target="#{usuarioBean.usuario}"/>
               <f:ajax/>
             </h:commandLink>
         </h:column>

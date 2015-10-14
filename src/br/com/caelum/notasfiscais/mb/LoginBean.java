@@ -29,9 +29,8 @@ public class LoginBean implements Serializable{
         	usuarioLogado.logar(usuario);
         	return "produto?faces-redirect=true";
         }else{
-        	usuarioLogado.deslogar();
         	this.usuario = new Usuario();
-        	return "login";
+        	return usuarioLogado.deslogar();
         }
 	}
 	

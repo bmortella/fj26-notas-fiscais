@@ -19,8 +19,9 @@ public class UsuarioLogadoBean implements Serializable{
 		this.usuario = usuario;
 	}
 	
-	public void deslogar(){
+	public String deslogar(){
 		this.usuario = null;
+		return "login?faces-redirect=true";
 	}
 	
 	public Usuario getUsuario(){
