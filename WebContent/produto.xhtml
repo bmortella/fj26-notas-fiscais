@@ -11,6 +11,9 @@
 <h:body>
     <div id="cabecalho">
         <h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany" />
+        <div id="usuarioLogado">
+            Logado como: #{loginBean.usuario.login}
+        </div>
     </div>
     
     <div id="conteudo">
