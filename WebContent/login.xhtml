@@ -5,9 +5,14 @@
 	  xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
     <title>Sistema de Notas Fiscais - UberDist</title>
+    <h:outputStylesheet library="css" name="style.css" />
 </h:head>
 
 <h:body>
+    <div id="cabecalho">
+        <h:graphicImage library="imagens" name="logo-uber.png" id="logoCompany" />
+    </div>
+
     <div id="conteudo">
         <h2>Login no sistema</h2>
         <h:form id="formlogin">
@@ -21,6 +26,11 @@
                 <h:commandButton value="Efetuar login" action="#{loginBean.efetuaLogin}" />
                 </h:panelGrid>
         </h:form>
+    </div>
+    
+    <div id="rodape">
+        Copyright 2015.
+        Todos os direitos reservados a Caelum.
     </div>
 </h:body>
 </html>
