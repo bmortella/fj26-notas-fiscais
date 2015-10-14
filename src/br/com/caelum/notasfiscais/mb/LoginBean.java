@@ -16,7 +16,7 @@ public class LoginBean {
 		UsuarioDao dao = new UsuarioDao();
 		boolean loginValido = dao.existe(this.usuario);
         if(loginValido){
-        	return "produto";
+        	return "produto?faces-redirect=true";
         }else{
         	this.usuario = new Usuario();
         	return "login";
